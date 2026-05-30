@@ -13,133 +13,115 @@
 background-color: white;
 color: darkgrey;
 font-family: sans-serif;
-font-size: 125%;
-}</style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-tag name="template" color="green"></tw-tag><tw-passagedata pid="1" name="TitleScreen" tags="" position="2000,25" size="200,200">(b4r:&quot;none&quot;,&quot;none&quot;,&quot;outset&quot;)+(b4r-colour:white) [Land of the ](text-colour:red)+(b4r:&quot;none&quot;,&quot;none&quot;,&quot;outset&quot;)+(b4r-colour:red)[Dead]
+font-size: clamp(16px, 2vw, 24px);
+}
+.title{
+   font-size: clamp(2rem, 6vw, 5rem);
+}
+tw-story {
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+}
 
+tw-story {
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+}
+tw-link,
+button {
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    padding: 10px 20px;
+}
+<meta charset="utf-8"></style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-tag name="template" color="green"></tw-tag><tw-passagedata pid="1" name="TitleScreen" tags="" position="2000,25" size="200,200">&lt;span class=&quot;title&quot;&gt;(b4r:&quot;none&quot;,&quot;none&quot;,&quot;outset&quot;)+(b4r-colour:white) [Land of the ](text-colour:red)+(b4r:&quot;none&quot;,&quot;none&quot;,&quot;outset&quot;)+(b4r-colour:red)[ Dead] &lt;/span&gt;
 
 (b4r:&quot;none&quot;,&quot;none&quot;,&quot;outset&quot;)+(b4r-colour:white)[By Uyanda, Tiaan, Nicholas]
-{&lt;!--PS: PLS CHAANGE THE FONT--&gt;}
-(set:$playedChapter to 0)
+{
+&lt;!--Variables start from 0--&gt;
+(if:$melissaProgress is empty)[
+    (set:$melissaProgress to 0)
+]
 
+(if:$scarProgress is empty)[
+    (set:$scarProgress to 0)
+]
 
-{&lt;!--MenuImage--&gt;}
-&lt;img src=&quot;https://i.pinimg.com/1200x/1e/43/3e/1e433eaec9f1993a5ec3e5e4a41a12d4.jpg&quot; width=&quot;800&quot; height=&quot;500&quot;&gt;
+&lt;!--MenuImage--&gt;
+}
 
+&lt;img src=&quot;https://i.pinimg.com/1200x/1e/43/3e/1e433eaec9f1993a5ec3e5e4a41a12d4.jpg&quot; style=&quot;width:100%;max-width:1400px;height:auto;&quot;&gt;
 
 (button:&quot;==X==&quot;)
 [
 	[[Main Menu]]
 ]
-(button:&quot;==X==&quot;)
+{
+(if: (saved-games:) contains &quot;Save Game&quot;)
 [
-	(if:(saved-games:) contains &quot;Save Game&quot;)[
-    (link:&quot;Load Game&quot;)(load-game:&quot;Save Game&quot;)
-    ]
-]
-(button:&quot;==X==&quot;)
-[{&lt;!--exits--&gt;}
-	
-	[[Exit]]
-]
+	(button: &quot;==X==&quot;)
+    [
 
-</tw-passagedata><tw-passagedata pid="2" name="Main Menu" tags="" position="2175,450" size="100,100">
-(button:&quot;=X=&quot;)[
-[[Prologue]]
+		(link:&quot;Load Game&quot;)[
+        (load-game: &quot;Save Game&quot;)
+        ] 
+     ]
 ]
-(button:&quot;==X&quot;)[
-[[TitleScreen]]
-]
+    
+}
 
+</tw-passagedata><tw-passagedata pid="2" name="Prologue" tags="" position="2400,200" size="100,100">&lt;h1&gt;&lt;b&gt;Prologue&lt;/b&gt;&lt;/h1&gt;
 
+The negotiations have failed. Scar, after pleading multiple times with this Outlands camp
+leader to reconsider, gives into his rage and shoots down all the soldiers. “Scar, what were
+you thinking!”, I shout but it was too late as I see bodies lying on the floor, possibly dead.
+Amongst them, I see civilians laying injured, so I try to reach out and help but
+reinforcements are already on their way, so we leave. Our army rushes towards our home
+after negotiations fail at the Outlands territory.
+The meeting.
+I barge into the room first and take a seat at the round table, following our meeting
+procedures during distress periods so everyone that enters acknowledges the full weight of
+this failure. Melissa, our scientist who researches the Plague with her team and occasionally
+fights using her technology, enters with her team first with a carefree attitude as she is not
+at fault. John, the scout leader, does the same respectfully to keep the order. Finally, Scar,
+leader of the vanguard, also enters bringing in his militia who are collectively known to be
+angry as always.
+[Dialogue of John, Melissa and Scar angrily arguing]
+[Edward, the MC, uses his flame powers to shoot a flame arrow through the roof which
+explodes outside making an extremely loud sound]
+My guards enter the room to subdue Scar’s group. “Who of you is with me and who of you
+is betraying me?” I ask.
 
-||=
-	(if: $playedChapter &gt;= 1 and $characterChoose = &quot;Melissa&quot;)[
-	(button:&quot;X==&quot;)[[Chapter 1(Melissa)]]
-    ]
-    (if: $playedChapter &gt;= 1 and $characterChoose = &quot;Scar&quot;)[
-	(button:&quot;X==&quot;)[[Chapter 1(Scar)]]
-    ]
-	(if: $playedChapter &gt;= 2 and $characterChoose = &quot;Melissa&quot;)[
-	(button:&quot;X==&quot;)[[Chapter 2(Melissa)]]
-    ]
-    (if: $playedChapter &gt;= 2 and $characterChoose = &quot;Scar&quot;)[
-	(button:&quot;X==&quot;)[[Chapter 2(Scar)]]
-    ]
-    	(if: $playedChapter &gt;= 3 and $characterChoose = &quot;Melissa&quot;)[
-	(button:&quot;X==&quot;)[[Chapter 3(Melissa)]]
-    ]
-    (if: $playedChapter &gt;= 3 and $characterChoose = &quot;Scar&quot;)[
-	(button:&quot;X==&quot;)[[Chapter 3(Scar)]]
-    ]
-	(if: $playedChapter &gt;= 4 and $characterChoose = &quot;Melissa&quot;)[
-	(button:&quot;X==&quot;)[[Chapter 4(Melissa)]]
-    ]
-    (if: $playedChapter &gt;= 4 and $characterChoose = &quot;Scar&quot;)[
-	(button:&quot;X==&quot;)[[Chapter 4(Scar)]]
-    ]
-    	(if: $playedChapter &gt;= 5 and $characterChoose = &quot;Melissa&quot;)[
-	(button:&quot;X==&quot;)[[Chapter 5(Melissa)]]
-    ]
-    (if: $playedChapter &gt;= 5 and $characterChoose = &quot;Scar&quot;)[
-	(button:&quot;X==&quot;)[[Chapter 5(Scar)]]
-    ]
-	(if: $playedChapter &gt;= 6 and $characterChoose = &quot;Melissa&quot;)[
-	(button:&quot;X==&quot;)[[Chapter 6(Melissa)]]
-    ]
-    (if: $playedChapter &gt;= 6 and $characterChoose = &quot;Scar&quot;)[
-	(button:&quot;X==&quot;)[[Chapter 6(Scar)]]
-    ]
-    	(if: $playedChapter &gt;= 7 and $characterChoose = &quot;Melissa&quot;)[
-	(button:&quot;X==&quot;)[[Chapter 7(Melissa)]]
-    ]
-    (if: $playedChapter &gt;= 7 and $characterChoose = &quot;Scar&quot;)[
-	(button:&quot;X==&quot;)[[Chapter 7(Scar)]]
-    ]
-	(if: $playedChapter &gt;= 8 and $characterChoose = &quot;Melissa&quot;)[
-	(button:&quot;X==&quot;)[[Chapter 8(Melissa)]]
-    ]
-    (if: $playedChapter &gt;= 8 and $characterChoose = &quot;Scar&quot;)[
-	(button:&quot;X==&quot;)[[Chapter 8(Scar)]]
-    ]
-    (if: $playedChapter &gt;= 9 and $characterChoose = &quot;Melissa&quot;)[
-	(button:&quot;X==&quot;)[[Chapter 9(Melissa)]]
-    ]
-    (if: $playedChapter &gt;= 9 and $characterChoose = &quot;Scar&quot;)[
-	(button:&quot;X==&quot;)[[Chapter 9(Scar)]]
-    ]
-	(if: $playedChapter &gt;= 10 and $characterChoose = &quot;Melissa&quot;)[
-	(button:&quot;X==&quot;)[[Chapter 10(Melissa)]]
-    ]
-    (if: $playedChapter &gt;= 10 and $characterChoose = &quot;Scar&quot;)[
-	(button:&quot;X==&quot;)[[Chapter 10(Scar)]]
-    ]</tw-passagedata><tw-passagedata pid="3" name="Prologue" tags="" position="2400,200" size="100,100">
 Choose whose route you wish to follow:
-(set: $characterChoose to &quot;null&quot;)
+(set: $route to &quot;null&quot;)
 
 (button:)
 [
-	(link-rerun:&quot;Melissa (Good Route)&quot;)
-    	[(set:$characterChoose to &quot;Melissa&quot;)
+	(link-rerun:&quot;Melissa Route&quot;)
+    	[(set:$route to &quot;Melissa&quot;)
+         (set:$melissaProgress to 1)(set:$scarProgress to 1)
         (rerun:?confirmation)]
 ]
 
 (button:)
 [
-	(link-rerun:&quot;Scar (Bad Route)&quot;)
-    	[(set:$characterChoose to &quot;Scar&quot;)
+	(link-rerun:&quot;Scar Route&quot;)
+    	[(set:$route to &quot;Scar&quot;)
+         (set:$melissaProgress to 1)(set:$scarProgress to 1)
         (rerun:?confirmation)]
  ]
  
  |confirmation&gt;[
-    (if: $characterChoose is not &quot;&quot;)
+    (if: $route is not &quot;&quot;)
     [
-        &quot;**You chose &lt; $characterChoose &gt; route.**&quot;
+        &quot;**You chose &lt; $route &gt; route.**&quot;
         &lt;br&gt;
         (This choice affects future gameplay.)
-        (set:$currentChapter to &quot;Chapter 1(&quot; + $characterChoose + &quot;)&quot;)
+        (set:$currentChapter to &quot;Chapter 1(&quot; + $route + &quot;)&quot;)
         (button:&quot;==X==&quot;)
         [
-        (if:$characterChoose is not &quot;null&quot;)[
+        (if:$route is not &quot;null&quot;)[
+         (set:$melissaProgress to 1)(set:$scarProgress to 1)
            (link:&quot;Confirm?&quot;)[ (goto:$currentChapter)]
            ]
            (else:)[
@@ -148,7 +130,183 @@ Choose whose route you wish to follow:
         ]
     ]
 ]
-</tw-passagedata><tw-passagedata pid="4" name="Exit" tags="" position="1975,300" size="100,100"></tw-passagedata><tw-passagedata pid="5" name="Chapter 1(Melissa)" tags="" position="2750,500" size="100,100">Chapter 1 (Raid at the Fallen Tower, Melissa POV)</tw-passagedata><tw-passagedata pid="6" name="Chapter 1(Scar)" tags="" position="825,525" size="100,100">Chapter 1 (Raid at the fallen Tower, Scar POV)</tw-passagedata><tw-passagedata pid="7" name="Chapter 2(Melissa)" tags="" position="2875,500" size="100,100"></tw-passagedata><tw-passagedata pid="8" name="Chapter 4(Scar)" tags="" position="1175,525" size="100,100"></tw-passagedata><tw-passagedata pid="9" name="Chapter 4(Melissa)" tags="" position="3200,500" size="100,100"></tw-passagedata><tw-passagedata pid="10" name="Chapter 3(Scar)" tags="" position="1050,525" size="100,100"></tw-passagedata><tw-passagedata pid="11" name="Chapter 3(Melissa)" tags="" position="3025,500" size="100,100"></tw-passagedata><tw-passagedata pid="12" name="Chapter 2(Scar)" tags="" position="950,525" size="100,100"></tw-passagedata><tw-passagedata pid="13" name="Chapter 8(Scar)" tags="" position="1625,525" size="100,100"></tw-passagedata><tw-passagedata pid="14" name="Chapter 8(Melissa)" tags="" position="3775,500" size="100,100"></tw-passagedata><tw-passagedata pid="15" name="Chapter 7(Scar)" tags="" position="1525,525" size="100,100"></tw-passagedata><tw-passagedata pid="16" name="Chapter 7(Melissa)" tags="" position="3625,500" size="100,100"></tw-passagedata><tw-passagedata pid="17" name="Chapter 6(Scar)" tags="" position="1400,525" size="100,100"></tw-passagedata><tw-passagedata pid="18" name="Chapter 6(Melissa)" tags="" position="3475,500" size="100,100"></tw-passagedata><tw-passagedata pid="19" name="Chapter 5(Scar)" tags="" position="1275,525" size="100,100"></tw-passagedata><tw-passagedata pid="20" name="Chapter 5(Melissa)" tags="" position="3325,500" size="100,100"></tw-passagedata><tw-passagedata pid="21" name="Chapter 9(Melissa)" tags="" position="3900,500" size="100,100"></tw-passagedata><tw-passagedata pid="22" name="Chapter 9(Scar)" tags="" position="1775,525" size="100,100"></tw-passagedata><tw-passagedata pid="23" name="Chapter 10(Melissa)" tags="" position="4050,500" size="100,100"></tw-passagedata><tw-passagedata pid="24" name="Chapter 10(Scar)" tags="" position="1925,525" size="100,100"></tw-passagedata></tw-storydata>
+</tw-passagedata><tw-passagedata pid="3" name="Chapter 1(Melissa)" tags="" position="2750,500" size="100,100">Chapter 1 (Raid at the Fallen Tower, Melissa POV) 
+(set:$playedChapter to 1)(set:$route to &quot;Melissa&quot;)
+(set:$melissaProgress to 1)(set:$scarProgress to 1)
+(button:&quot;=X=&quot;)[(save-game:&quot;Save Game&quot;)
+(link:&quot;Back to Menu&quot;)[ (goto:&quot;Main Menu&quot;)]
+           ]</tw-passagedata><tw-passagedata pid="4" name="Chapter 1(Scar)" tags="" position="825,525" size="100,100">Chapter 1 (Raid at the fallen Tower, Scar POV) 
+(set:$playedChapter to 1)(set:$route to &quot;Scar&quot;)
+(set:$scarProgress to 1)(set:$melissaProgress to 1)
+
+(button:&quot;=X=&quot;)[
+    (save-game: &quot;Save Game&quot;)
+    (link:&quot;Save &amp; Go to Main Menu&quot;)[
+    (goto: &quot;Main Menu&quot;)]
+]
+           </tw-passagedata><tw-passagedata pid="5" name="Chapter 3(Scar)" tags="" position="2300,575" size="100,100"></tw-passagedata><tw-passagedata pid="6" name="Chapter 3(Melissa)" tags="" position="2175,700" size="100,100"></tw-passagedata><tw-passagedata pid="7" name="Chapter 2(Melissa)" tags="" position="2050,575" size="100,100"></tw-passagedata><tw-passagedata pid="8" name="Chapter 4(Melissa)" tags="" position="2050,700" size="100,100"></tw-passagedata><tw-passagedata pid="9" name="Chapter 5(Melissa)" tags="" position="2300,825" size="100,100"></tw-passagedata><tw-passagedata pid="10" name="Chapter 6(Melissa)" tags="" position="2050,825" size="100,100"></tw-passagedata><tw-passagedata pid="11" name="Chapter 7(Melissa)" tags="" position="2300,950" size="100,100"></tw-passagedata><tw-passagedata pid="12" name="Chapter 8(Melissa)" tags="" position="2175,1075" size="100,100"></tw-passagedata><tw-passagedata pid="13" name="Chapter 9(Melissa)" tags="" position="2050,1075" size="100,100"></tw-passagedata><tw-passagedata pid="14" name="Chapter 10(Melissa)" tags="" position="2300,1200" size="100,100"></tw-passagedata><tw-passagedata pid="15" name="Chapter 2(Scar)" tags="" position="2175,575" size="100,100"></tw-passagedata><tw-passagedata pid="16" name="Chapter 4(Scar)" tags="" position="2175,825" size="100,100"></tw-passagedata><tw-passagedata pid="17" name="Chapter 5(Scar)" tags="" position="2300,700" size="100,100"></tw-passagedata><tw-passagedata pid="18" name="Chapter 6(Scar)" tags="" position="2175,950" size="100,100"></tw-passagedata><tw-passagedata pid="19" name="Chapter 7(Scar)" tags="" position="2050,950" size="100,100"></tw-passagedata><tw-passagedata pid="20" name="Chapter 8(Scar)" tags="" position="2300,1075" size="100,100"></tw-passagedata><tw-passagedata pid="21" name="Chapter 9(Scar)" tags="" position="2175,1200" size="100,100"></tw-passagedata><tw-passagedata pid="22" name="Chapter 10(Scar)" tags="" position="2050,1200" size="100,100"></tw-passagedata><tw-passagedata pid="23" name="Main Menu" tags="" position="2175,450" size="100,100">&lt;!--Buttons create prologue and title screen passage--&gt;
+=||
+(button:&quot;X==&quot;)[
+[[Prologue]]
+]
+||=
+(button:&quot;==X&quot;)[
+[[TitleScreen]]&lt;img src=&quot;https://www.google.com/imgres?q=home%20ui%20image&amp;imgurl=https%3A%2F%2Fcdn-icons-png.flaticon.com%2F512%2F171%2F171532.png&amp;imgrefurl=https%3A%2F%2Fwww.flaticon.com%2Ffree-icon%2Fhome_171532&amp;docid=Tkf1btx6ygCsUM&amp;tbnid=YHWrSXZi2p1mwM&amp;vet=12ahUKEwjv54OdoOGUAxXOWkEAHVY_AQcQnPAOegQIFxAB..i&amp;w=512&amp;h=512&amp;hcb=2&amp;ved=2ahUKEwjv54OdoOGUAxXOWkEAHVY_AQcQnPAOegQIFxAB&quot;&gt;
+]
+|==|
+{
+(if:$route is empty)[
+(set:$route to &quot;null&quot;)
+]
+(if:$melissaProgress is empty)
+[
+(set:$melissaProgress to 0)
+]
+(if:$scarProgress is empty)
+[
+(set:$scarProgress to 0)
+]
+
+(if: $melissaProgress &gt; 0 or $scarProgress &gt; 0)[
+
+Continue or switch routes:
+
+(button:)
+[
+	(link-rerun:&quot;Melissa Route&quot;)
+    	[(set:$route to &quot;Melissa&quot;)
+        (rerun:?confirmation)
+         (go-to:$currentChapter)
+        (save-game:&quot;Save Game&quot;)]
+ ]
+(button:)
+[
+	(link-rerun:&quot;Scar Route&quot;)
+    	[(set:$route to &quot;Scar&quot;)
+        (rerun:?confirmation)
+        (go-to:$currentChapter)
+        (save-game:&quot;Save Game&quot;)]
+ ]
+
+]
+}
+&lt;!--Normal alignment--&gt;
+
+
+||==
+(if:$route contains &quot;Melissa&quot;)
+[
+	(if: $melissaProgress &gt;= 1)[ 
+	(button:&quot;X==&quot;)[[Chapter 1(Melissa)]]
+    ]
+    	(if: $melissaProgress &gt;= 2)[ (if:$route = &quot;Melissa&quot;)[
+	(button:&quot;X==&quot;)[[Chapter 2(Melissa)]]
+    ]
+    ]    
+    (if: $melissaProgress &gt;= 3)[ (if:$route = &quot;Melissa&quot;)[
+	(button:&quot;X==&quot;)[[Chapter 3(Melissa)]]
+    ]
+    ]
+     (if: $melissaProgress &gt;= 4)[ (if:$route = &quot;Melissa&quot;)[
+	(button:&quot;X==&quot;)[[Chapter 4(Melissa)]]
+    ]
+    ]
+            	(if: $melissaProgress &gt;= 5)[ (if:$route = &quot;Melissa&quot;)[
+	(button:&quot;X==&quot;)[[Chapter 5(Melissa)]]
+    ]
+    ]
+     (if: $melissaProgress &gt;= 6)[ (if:$route = &quot;Melissa&quot;)[
+	(button:&quot;X==&quot;)[[Chapter 6(Melissa)]]
+    ]
+    ]
+     (if: $melissaProgress &gt;= 7)[ (if:$route = &quot;Melissa&quot;)[
+	(button:&quot;X==&quot;)[[Chapter 7(Melissa)]]
+    ]
+    ]
+     (if: $melissaProgress &gt;= 8)[ (if:$route = &quot;Melissa&quot;)[
+	(button:&quot;X==&quot;)[[Chapter 8(Melissa)]]
+    ]
+    ]
+     (if: $melissaProgress &gt;= 9)[ (if:$route = &quot;Melissa&quot;)[
+	(button:&quot;X==&quot;)[[Chapter 9(Melissa)]]
+    ]
+    ]
+     (if: $melissaProgress &gt;= 10)[ (if:$route = &quot;Melissa&quot;)[
+	(button:&quot;X==&quot;)[[Chapter 10(Melissa)]]
+    ]
+    ]
+    
+ ]
+ |==|
+ ==||
+ (if:$route contains &quot;Scar&quot;)
+[
+ 	(if: $playedChapter &gt;= 1)
+    [ 
+	(button:&quot;X==&quot;)[[Chapter 1(Scar)]]
+    ]
+
+ 	(if: $scarProgress &gt;= 2)
+    [ 
+	(button:&quot;X==&quot;)[[Chapter 2(Scar)]]
+    ]
+     (if: $scarProgress &gt;= 3)
+    [ 
+	(button:&quot;X==&quot;)[[Chapter 3(Scar)]]
+    ]
+ 	 (if: $scarProgress &gt;= 4)
+    [ 
+	(button:&quot;X==&quot;)[[Chapter 4(Scar)]]
+    ]
+
+ 	 (if: $scarProgress &gt;= 5)
+    [ 
+	(button:&quot;X==&quot;)[[Chapter 5(Scar)]]
+    ]
+
+ 	 	(if: $scarProgress &gt;= 6)
+    [ 
+	(button:&quot;X==&quot;)[[Chapter 6(Scar)]]
+    ]
+
+ 	 	(if: $scarProgress &gt;= 7)
+    [ 
+	(button:&quot;X==&quot;)[[Chapter 7(Scar)]]
+    ]
+ 	(if: $scarProgress &gt;= 8)
+    [ 
+	(button:&quot;X==&quot;)[[Chapter 8(Scar)]]
+    ]
+ 	(if: $scarProgress &gt;= 9)
+    [ 
+	(button:&quot;X==&quot;)[[Chapter 9(Scar)]]
+    ]
+
+ 	(if: $scarProgress &gt;= 10)
+    [ 
+	(button:&quot;X==&quot;)[[Chapter 10(Scar)]]
+    ]
+    
+]
+{
+ |confirmation&gt;[
+    (if: $route is not &quot;&quot;)
+    [
+        (button:&quot;==X==&quot;)
+        [
+        (if:$melissaProgress is 0 or $scarProgress is 0 
+        or $playedChapter is 0)[
+         (set:$melissaProgress to 1)(set:$scarProgress to 1)
+         (set:$playedChapter to 1)
+           ]
+           (set: $currentChapter to &quot;Chapter &quot;+(text:$playedChapter)+&quot;(&quot; 
+        + (text: $route) + &quot;)&quot;)
+        ]
+    ]
+]
+
+
+}</tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">(function(){"use strict";
 var require,define;!function(){var e={},r={};require=function(i){var n=e[i];return n&&(r[i]=n[1].apply(void 0,n[0].map(require)),e[i]=void 0),r[i]},(define=function(r,i,n){if("function"==typeof r)return r();e[r]=[i,n]}).amd=!0}();/*!
  * https://github.com/paulmillr/es6-shim
